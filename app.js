@@ -20,39 +20,65 @@ var foods = [{
 	food_random_title: randFood()
 }];
 
+var Card = Backbone.Model.extend({
+
+});
+
 var FoodCardView = Backbone.View.extend({
 
 	events: {
 		"click figure": "addFavNum"
 	},
 
+	initialize: function(){
+		this.listenTo(this.model, 'change', this.render);
+	},
+
 	addFavNum: function(){
+
+		// If using jQuery
 		// var count = parseInt($(this.el).find('.food-fav-num').html());
 		// count++;
 		// this.$el.find('.food-fav-num').html(count);
 
-		this.model.food_fav_num = this.model.food_fav_num + 1;
-		this.render();
+		var count = this.model.get('food_fav_num') + 1;
+		this.model.set('food_fav_num', count);
+
+		
+		// if we do not use model use below
+		// this.model.food_fav_num = this.model.food_fav_num + 1;
+		// this.render();
 	},
 
 	tagName: "li",
 	className: "foodCard-Box medium-3 columns end",
 	render: function(){
 		var template = _.template($('#FoodCardTemplate').html());
-		$(this.el).html(template(this.model));
+		
+		// New due to learning MODEL
+		var html = template(this.model.toJSON());
+		this.$el.html(html);
+		
+		// Below for learning VIEW
+		// $(this.el).html(template(this.model));
 	}
 
 
 });
 
-_.each(foods, function(food){
-	var view = new FoodCardView({ model: food });
-	view.render();
-	$('.foodCard').append(view.el);
-});
+
+// Commenting due to learning backbone MODEL
+// _.each(foods, function(food){
+// 	var view = new FoodCardView({ model: food });
+// 	view.render();
+// 	$('.foodCard').append(view.el);
+// });
 
 
 $('.addFoodCard').on('click', function(){
+
+
+
 
 	// Because the VARIABLE food is already defined the first one,
 	// Thus the random title won't generate, because we just calling that object
@@ -64,9 +90,11 @@ $('.addFoodCard').on('click', function(){
 		food_fav_num: Math.floor(Math.random() * 500),
 		food_random_title: randFood()
 	}
-	
 
-	var view = new FoodCardView({ model: food });
+		// Create a new card model object
+	var cardModel = new Card(food);
+
+	var view = new FoodCardView({ model: cardModel });
 	view.render();
 	$('.foodCard').append(view.el);
 	

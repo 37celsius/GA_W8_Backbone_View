@@ -11,6 +11,7 @@ a {
 }
 
 body {
+	padding-top: 10px;
 	background-color: #F4F7F5;
 }
 
@@ -27,6 +28,7 @@ figure {
 	font-family: 'Roboto', sans-serif;
 	  color: #5B666B;
   font-size: 3.5em;
+    text-transform: uppercase;
 }
 
 .foodCard {
@@ -116,13 +118,18 @@ color: #84DD63;
 .addFoodCard {
 	width: 100%;
 border: 0;
-    padding: 14px;
+    padding: 16px;
   margin: 8px 0;
     background: #84DD63;
-    font-size: 1.5em;
-      color: #2B790E;
+  font-size: 1.25em;
+  color: #2B790E;
+  border-radius: 4px;
+  text-transform: uppercase;
 }
 
+.addFoodCard:hover {
+	background: #B5E7A2;
+}
 
 
 
