@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Random Food</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:700,400' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="foundation.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="style.css">
+
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="underscore.js"></script>
+	<script src="backbone.js"></script>
+</head>
+<body>
+	<div id="Container">
+		<header class="row randomFoodHeader">
+			<h1 class="medium-9 columns">Food Random Card</h1>
+			<div class="medium-3 columns">
+				<button class="addFoodCard"><i class="fa fa-plus"></i> Add Food</button>
+			</div>
+		</header>
+		<section class="row">
+			<ul class="foodCard">
+
+			</ul>
+			
+		</section>
+	</div>
+
+	<!-- Creating the template for the FOOD CARD BOX -->
+	<script id="FoodCardTemplate" type="text/x-underscore-template">
+		
+			<figure>
+				<span class="starIcon"><i class="fa fa-star"></i></span>
+				<img src="{{ img_url }}" alt="{{ food_random_title }}">
+			</figure>
+			<section class="foodCard-Box-Content">
+				<h3>{{ food_random_title }}</h3>
+				<h4>{{ at_ga }}</h4>
+				<footer>
+					<h5>Favourite by: <span class="food-fav-num">{{ food_fav_num }}</span> People</h5>
+				</footer>
+			</section>
+
+			
+	</script>
+
+	<script src="app.js"></script>
+</body>
+</html>
